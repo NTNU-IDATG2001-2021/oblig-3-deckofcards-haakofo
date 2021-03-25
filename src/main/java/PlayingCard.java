@@ -40,7 +40,8 @@ public class PlayingCard {
      *
      * @return the suit of the card
      */
-    public char getSuit() {
+    public char getSuit()
+    {
         return suit;
     }
 

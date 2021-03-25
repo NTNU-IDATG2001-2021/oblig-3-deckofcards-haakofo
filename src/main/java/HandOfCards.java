@@ -11,8 +11,12 @@ public class HandOfCards
         currentHand = cardDeck.dealHand(cards);
     }
 
-    public String getHandString()
+    public void printHand()
     {
-        return " " + currentHand;
+        for (PlayingCard card : currentHand)
+        {
+            System.out.println(card.getAsString());
+        }
     }
+
 }
