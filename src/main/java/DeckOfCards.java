@@ -1,7 +1,5 @@
 import javax.swing.text.PlainDocument;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -30,4 +28,22 @@ public class DeckOfCards
                 .collect(Collectors.toList());
         Collections.shuffle(deck);
     }
+
+    public Set<PlayingCard> dealHand(int cards)
+    {
+        boolean finished = false;
+        Random r = new Random();
+        Set<PlayingCard> hand = new LinkedHashSet<PlayingCard>();
+        while(!finished)
+        {
+            hand.add(deck.get(r.nextInt(deck.size())));
+
+            if(hand.size() == cards)
+            {
+                finished = true;
+            }
+        }
+        return hand;
+    }
+
 }

@@ -1,7 +1,18 @@
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+
 public class HandOfCards
 {
-    public static void main(String[] args)
+    private Set<PlayingCard> currentHand;
+
+    public HandOfCards(int cards, DeckOfCards cardDeck)
     {
-        DeckOfCards d1 = new DeckOfCards();
+        currentHand = cardDeck.dealHand(cards);
+    }
+
+    public String getHandString()
+    {
+        return " " + currentHand;
     }
 }
