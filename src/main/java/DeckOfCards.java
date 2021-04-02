@@ -7,6 +7,7 @@ public class DeckOfCards
 {
 
     private List<PlayingCard> deck = new ArrayList<>();
+    private Set<PlayingCard> hand;
 
     public DeckOfCards()
     {
@@ -33,17 +34,36 @@ public class DeckOfCards
     {
         boolean finished = false;
         Random r = new Random();
-        Set<PlayingCard> hand = new LinkedHashSet<PlayingCard>();
+        hand = new LinkedHashSet<PlayingCard>();
         while(!finished)
         {
             hand.add(deck.get(r.nextInt(deck.size())));
 
             if(hand.size() == cards)
             {
+                if(deck.containsAll(hand))
+                {
+                    deck.removeAll(hand);
+                }
+
                 finished = true;
             }
         }
         return hand;
+    }
+
+    public List<PlayingCard> getDeck()
+    {
+        return deck;
+    }
+
+    public void returnCardsToDeck()
+    {
+        if(deck.size() != 52)
+        {
+            deck.addAll(hand);
+            hand.removeAll(hand);
+        }
     }
 
 }

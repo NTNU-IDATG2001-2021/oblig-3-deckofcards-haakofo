@@ -19,4 +19,9 @@ public class HandOfCards
         }
     }
 
+    public Set<PlayingCard> getCurrentHand()
+    {
+        return currentHand;
+    }
+
 }
