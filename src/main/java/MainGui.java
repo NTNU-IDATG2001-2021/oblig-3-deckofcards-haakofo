@@ -1,15 +1,26 @@
-public class MainGui
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+
+import java.util.Objects;
+
+public class MainGui extends Application
 {
-    public static void main(String[] args)
+
+    public void buildLayout()
     {
-        DeckOfCards d1 = new DeckOfCards();
-        System.out.println(d1.getDeck().size());
-        HandOfCards h1 = new HandOfCards(5,d1);
-        h1.printHand();
-        System.out.println("Nymber of cards at hand: " + h1.getCurrentHand().size());
-        System.out.println(d1.getDeck().size());
-        d1.returnCardsToDeck();
-        System.out.println(d1.getDeck().size());
-        System.out.println(h1.getCurrentHand().size());
+
     }
+
+    public void start(Stage s1) throws Exception
+    {
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("structure.fxml")));
+        s1.setTitle("CardGame");
+        s1.setScene(new Scene(root, 300, 275));
+        s1.show();
+    }
+
+
 }
