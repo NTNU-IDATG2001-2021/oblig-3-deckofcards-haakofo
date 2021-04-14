@@ -1,10 +1,12 @@
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Random;
 
 public class DeckOfCards
 {
 
     private List<PlayingCard> deck = new ArrayList<>();
-    private List<PlayingCard> hand;
 
     public DeckOfCards()
     {
@@ -28,8 +30,8 @@ public class DeckOfCards
     public HandOfCards dealHand(int cards)
     {
         boolean finished = false;
+        ArrayList<PlayingCard> hand = new ArrayList<>();
         Random r = new Random();
-        hand = new ArrayList<PlayingCard>();
         while(!finished)
         {
             hand.add(deck.get(r.nextInt(deck.size())));
@@ -40,21 +42,12 @@ public class DeckOfCards
                 finished = true;
             }
         }
-        return new HandOfCards();
+        return new HandOfCards(hand);
     }
 
     public List<PlayingCard> getDeck()
     {
         return deck;
-    }
-
-    public void returnCardsToDeck()
-    {
-        if(deck.size() != 52)
-        {
-            deck.addAll(hand);
-            hand.removeAll(hand);
-        }
     }
 
 }

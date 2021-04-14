@@ -14,8 +14,7 @@
   <content>
     <AnchorPane>
          <children>
-            <Button layoutX="535.0" layoutY="328.0" mnemonicParsing="false" onAction="#buttonDealHand" text="Deal Hand" />
-            <Button layoutX="526.0" layoutY="380.0" mnemonicParsing="false" text="Analyze Hand" />
+            <Button layoutX="300.0" layoutY="336.0" mnemonicParsing="false" onAction="#buttonDealHand" prefHeight="47.0" prefWidth="97.0" text="Deal Hand" />
             <Line endX="608.0" layoutX="100.0" layoutY="207.0" startX="-100.0" />
             <Label layoutX="14.0" layoutY="224.0" text="Flush :">
                <font>
@@ -27,26 +26,27 @@
                   <Font size="19.0" />
                </font>
             </Label>
-            <TextArea layoutX="187.0" layoutY="219.0" prefHeight="27.0" prefWidth="200.0" />
-            <TextArea layoutX="187.0" layoutY="263.0" prefHeight="27.0" prefWidth="200.0" />
+            <TextArea layoutX="187.0" layoutY="263.0" prefHeight="27.0" prefWidth="200.0" fx:id="hasQueenOfSpadesTextField" />
             <Label layoutX="20.0" layoutY="312.0" text="Card of hearts :">
                <font>
                   <Font size="19.0" />
                </font>
             </Label>
-            <TextArea layoutX="14.0" layoutY="340.0" prefHeight="27.0" prefWidth="200.0" />
+            <TextArea layoutX="14.0" layoutY="340.0" prefHeight="27.0" prefWidth="200.0" fx:id="cardsOfHeartsTextField" />
             <Label layoutX="9.0" layoutY="378.0" text="Sum of faces :">
                <font>
                   <Font size="19.0" />
                </font>
             </Label>
-            <TextArea layoutX="14.0" layoutY="406.0" prefHeight="27.0" prefWidth="200.0" />
-            <Button layoutX="526.0" layoutY="432.0" mnemonicParsing="false" onAction="#restartGame" text="Restart Game" />
+            <TextArea layoutX="14.0" layoutY="406.0" prefHeight="27.0" prefWidth="200.0" fx:id="sumOfFacesTextField"/>
+            <Button layoutX="298.0" layoutY="405.0" mnemonicParsing="false" onAction="#restartGame" prefHeight="40.0" prefWidth="102.0" text="Restart Game" />
             <ImageView fx:id="cardPicture1" fitHeight="150.0" fitWidth="200.0" layoutX="20.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true" />
             <ImageView fx:id="cardPicture2" fitHeight="150.0" fitWidth="200.0" layoutX="148.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true" />
             <ImageView fx:id="cardPicture3" fitHeight="150.0" fitWidth="200.0" layoutX="287.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true" />
             <ImageView fx:id="cardPicture4" fitHeight="150.0" fitWidth="200.0" layoutX="427.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true" />
             <ImageView fx:id="cardPicture5" fitHeight="150.0" fitWidth="200.0" layoutX="565.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true" />
+            <TextArea layoutX="187.0" layoutY="219.0" prefHeight="27.0" prefWidth="200.0" fx:id="isFlushTextField" />
+            <ImageView fitHeight="205.0" fitWidth="268.0" layoutX="431.0" layoutY="238.0" pickOnBounds="true" preserveRatio="true" fx:id="logo" />
          </children>
          <padding>
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />

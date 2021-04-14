@@ -34,7 +34,7 @@ public class PlayingCard {
      */
     public String getAsString()
     {
-        return String.format("%s%s", suit, face);
+        return String.format("%s%s", face, suit);
     }
 
     /**

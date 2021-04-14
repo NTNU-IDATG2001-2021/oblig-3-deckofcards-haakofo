@@ -1,12 +1,12 @@
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
-import javafx.scene.control.TextField;
+import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 import java.net.URL;
-import java.util.*;
+import java.util.ResourceBundle;
 
 public class MainController implements Initializable
 {
@@ -27,13 +27,15 @@ public class MainController implements Initializable
 
 
     @FXML
-    private TextField sumOfFacesTextField;
+    private TextArea sumOfFacesTextField;
     @FXML
-    private TextField cardsOfHeartsTextField;
+    private TextArea cardsOfHeartsTextField;
     @FXML
-    private TextField hasQueenOfSpadesTextField;
+    private TextArea hasQueenOfSpadesTextField;
     @FXML
-    private TextField isFlushTextField;
+    private TextArea isFlushTextField;
+    @FXML
+    private ImageView logo;
 
 
     public Image getBackImage()
@@ -63,6 +65,15 @@ public class MainController implements Initializable
             this.cardPicture3.setImage(setCardPicture(hand.getCurrentHand().get(2)));
             this.cardPicture4.setImage(setCardPicture(hand.getCurrentHand().get(3)));
             this.cardPicture5.setImage(setCardPicture(hand.getCurrentHand().get(4)));
+
+            sumOfFacesTextField.setText(String.valueOf(hand.calculateSumOfFaces()));
+
+            cardsOfHeartsTextField.setText(hand.amountOfHearts().size() > 0 ? hand.formStringOfHearts(hand.amountOfHearts()) : "No hearts.");
+
+            isFlushTextField.setText(hand.checkForFlush() ? "Yes" : "No");
+
+            hasQueenOfSpadesTextField.setText(hand.hasQueenOfSpades() ? "Yes" : "No");
+
         }
         catch (IllegalArgumentException iae)
         {
@@ -75,12 +86,9 @@ public class MainController implements Initializable
     @FXML
     public Image setCardPicture(PlayingCard card)
     {
-        Image image = null;
+        String fileName = "/Cards_png/" + card.getAsString() + ".png";
 
-            String fileName = card.getAsString() + ".PNG";
-            image = new Image("/Cards_png/" + fileName);
-
-        return image;
+        return new Image(getClass().getResourceAsStream(fileName));
     }
 
     @FXML
@@ -92,6 +100,8 @@ public class MainController implements Initializable
     @FXML
     public void initialize2()
     {
+        isFlushTextField.clear();
+
         this.deckOfCards = new DeckOfCards();
         setBackImage();
     }
@@ -100,6 +110,7 @@ public class MainController implements Initializable
     public void initialize(URL url, ResourceBundle resourceBundle)
     {
         this.deckOfCards = new DeckOfCards();
+        logo.setImage(new Image("/Other_png/logo.jpg"));
         setBackImage();
     }
 }
