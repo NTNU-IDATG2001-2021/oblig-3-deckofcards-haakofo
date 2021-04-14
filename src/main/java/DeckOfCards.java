@@ -1,13 +1,10 @@
-import javax.swing.text.PlainDocument;
 import java.util.*;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class DeckOfCards
 {
 
     private List<PlayingCard> deck = new ArrayList<>();
-    private Set<PlayingCard> hand;
+    private List<PlayingCard> hand;
 
     public DeckOfCards()
     {
@@ -25,31 +22,25 @@ public class DeckOfCards
 
     private void shuffle()
     {
-        deck.stream()
-                .collect(Collectors.toList());
         Collections.shuffle(deck);
     }
 
-    public Set<PlayingCard> dealHand(int cards)
+    public HandOfCards dealHand(int cards)
     {
         boolean finished = false;
         Random r = new Random();
-        hand = new LinkedHashSet<PlayingCard>();
+        hand = new ArrayList<PlayingCard>();
         while(!finished)
         {
             hand.add(deck.get(r.nextInt(deck.size())));
+            deck.removeAll(hand);
 
             if(hand.size() == cards)
             {
-                if(deck.containsAll(hand))
-                {
-                    deck.removeAll(hand);
-                }
-
                 finished = true;
             }
         }
-        return hand;
+        return new HandOfCards();
     }
 
     public List<PlayingCard> getDeck()

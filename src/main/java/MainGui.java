@@ -4,23 +4,23 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-import java.util.Objects;
-
 public class MainGui extends Application
 {
 
-    public void buildLayout()
+    public static void main(String[] args)
     {
-
+        launch(args);
     }
 
-    public void start(Stage s1) throws Exception
+    public void start(Stage stage) throws Exception
     {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("structure.fxml")));
-        s1.setTitle("CardGame");
-        s1.setScene(new Scene(root, 300, 275));
-        s1.show();
+        Parent root = FXMLLoader.load(getClass().getResource("structure.fxml"));
+        stage.setTitle("CardGame");
+        stage.setScene(new Scene(root, 700, 500));
+        stage.show();
     }
-
 
 }
+
+
+

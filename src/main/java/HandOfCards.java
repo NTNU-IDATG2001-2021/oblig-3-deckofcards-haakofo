@@ -1,14 +1,12 @@
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
 
 public class HandOfCards
 {
-    private Set<PlayingCard> currentHand;
+    private ArrayList<PlayingCard> currentHand;
 
-    public HandOfCards(int cards, DeckOfCards cardDeck)
+    public HandOfCards()
     {
-        currentHand = cardDeck.dealHand(cards);
+        currentHand = new ArrayList<PlayingCard>();
     }
 
     public void printHand()
@@ -19,7 +17,7 @@ public class HandOfCards
         }
     }
 
-    public Set<PlayingCard> getCurrentHand()
+    public ArrayList<PlayingCard> getCurrentHand()
     {
         return currentHand;
     }

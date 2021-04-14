@@ -13,4 +13,12 @@
         <maven.compiler.target>14</maven.compiler.target>
     </properties>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-base</artifactId>
+            <version>13</version>
+        </dependency>
+    </dependencies>
+
 </project>
