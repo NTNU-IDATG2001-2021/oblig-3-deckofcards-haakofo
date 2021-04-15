@@ -1,3 +1,6 @@
+import cards.DeckOfCards;
+import cards.HandOfCards;
+import cards.PlayingCard;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
@@ -8,12 +11,21 @@ import javafx.scene.image.ImageView;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * The controller used to connect the FXML to the rest of the code.
+ */
 public class MainController implements Initializable
 {
+    /**
+     * Declares a Deck, a javafx image and a hand.
+     */
     private DeckOfCards deckOfCards;
     private javafx.scene.image.Image backImage;
     private HandOfCards hand;
 
+    /**
+     * All the imageview variables. These hold the images seen in the GUI.
+     */
     @FXML
     private ImageView cardPicture1;
     @FXML
@@ -24,8 +36,12 @@ public class MainController implements Initializable
     private ImageView cardPicture4;
     @FXML
     private ImageView cardPicture5;
+    @FXML
+    private ImageView logo;
 
-
+    /**
+     * The text area variables for the GUI, these hold the text result from the different methods in the HandOfCards class.
+     */
     @FXML
     private TextArea sumOfFacesTextField;
     @FXML
@@ -34,15 +50,11 @@ public class MainController implements Initializable
     private TextArea hasQueenOfSpadesTextField;
     @FXML
     private TextArea isFlushTextField;
+
+    /**
+     * This methods sets the back image of the cards when the game is restarted or at startup.
+     */
     @FXML
-    private ImageView logo;
-
-
-    public Image getBackImage()
-    {
-        return backImage;
-    }
-
     public void setBackImage()
     {
         cardPicture1.setImage(new javafx.scene.image.Image("/Cards_png/back.PNG"));
@@ -52,7 +64,10 @@ public class MainController implements Initializable
         cardPicture5.setImage(new javafx.scene.image.Image("/Cards_png/back.PNG"));
     }
 
-
+    /**
+     * This method takes 5 cards from the deck and puts them onto the users hand, then the imageviews are updated along with the cards.
+     * If there is no more cards in the deck, and Error box will display a message.
+     */
     @FXML
     public void buttonDealHand()
     {
@@ -83,6 +98,11 @@ public class MainController implements Initializable
         }
     }
 
+    /**
+     * This method find the correct path for the individual cards and returns the correct Image.
+     * @param card the method takes in one Playingcard object.
+     * @return Returns an image.
+     */
     @FXML
     public Image setCardPicture(PlayingCard card)
     {
@@ -91,21 +111,26 @@ public class MainController implements Initializable
         return new Image(getClass().getResourceAsStream(fileName));
     }
 
+    /**
+     * This method restarts the game, and is used when the user presses the "Restart Game" button.
+     */
     @FXML
     public void restartGame()
     {
-        initialize2();
-    }
-
-    @FXML
-    public void initialize2()
-    {
         isFlushTextField.clear();
+        sumOfFacesTextField.clear();
+        hasQueenOfSpadesTextField.clear();
+        cardsOfHeartsTextField.clear();
 
         this.deckOfCards = new DeckOfCards();
         setBackImage();
     }
 
+    /**
+     * This is the inherited initialize method, it runs when the program starts.
+     * @param url
+     * @param resourceBundle
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle)
     {
