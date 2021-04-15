@@ -41,6 +41,31 @@ public class CardGame_test
     }
 
     /**
+     * Flush rarely happen, so this test is here to make sure that the check flush method actually works if there is a flush.
+     */
+    @Test
+    void testFlush()
+    {
+        DeckOfCards d2 = new DeckOfCards();
+        ArrayList<PlayingCard> flush = new ArrayList<>();
+
+        PlayingCard p11 = new PlayingCard('C',11);
+        PlayingCard p22 = new PlayingCard('C',1);
+        PlayingCard p33 = new PlayingCard('C',5);
+        PlayingCard p44 = new PlayingCard('C',7);
+        PlayingCard p55 = new PlayingCard('C',12);
+
+        flush.add(p11);
+        flush.add(p22);
+        flush.add(p33);
+        flush.add(p44);
+        flush.add(p55);
+
+        HandOfCards h2 = new HandOfCards(flush);
+        assertTrue(h2.checkForFlush());
+    }
+
+    /**
      * Tests that the hand actually has the amount of cards given to it.
      */
     @Test
